@@ -1,32 +1,44 @@
+if(Meteor.isClient){
 
-if (Meteor.isClient) {
+        Meteor.startup(function tempo(){
 
-       Template.horas.helpers({
+            
+            d = new Date();
+            horasVar = d.getHours();
+            minutosVar = d.getMinutes();
+            segundosVar = d.getSeconds();
 
-       'hora': function tempo(){
+               if(horasVar < 10){ 
+                    horasVar = "0" + horasVar
+                  };
+               if(minutosVar < 10) { 
+                    minutosVar = "0" + minutosVar
+                  };
+               if(segundosVar < 10) { 
+                    segundosVar = "0" + segundosVar
+                  };
 
-         d = new Date();
-         var horasVar = d.getHours();
-         var minutosVar = d.getMinutes();
-         var segundosVar = d.getSeconds();
-         var relogioFinal = horasVar +" : "+ minutosVar +" : "+ segundosVar;
-     
+            relogioFinal = horasVar +" : "+ minutosVar +" : "+ segundosVar;
+            
+            hex = "#" + horasVar + minutosVar + segundosVar;
+            console.log("Cor da data atual em HEX é: " + hex);
 
-         console.log(horasVar, minutosVar, segundosVar);
-         //setTimeout(function(){ tempo();}, 1000);
-         return document.write(relogioFinal);
+            document.body.style.background = hex;
+            
+           
+            setTimeout(function(){tempo();}, 1000);
+            return relogioFinal;
+        ;
 
-
-    }
-
-
-  });
+          
 
 
+      });
 
-}
+      
+}       
 
 if (Meteor.isServer) {
-
+      
 
 }
