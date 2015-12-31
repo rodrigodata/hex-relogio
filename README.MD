@@ -3,5 +3,5 @@
 Gerado cor a partir da hora atual. Live demo http://hexcolors.meteor.com/
 
 <h2>Todo</h2>
-- Melhorar Layout;
+- <s>Melhorar Layout;</s>
 - Melhorar para mobile.
