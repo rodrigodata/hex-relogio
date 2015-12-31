@@ -1,6 +1,9 @@
-/* CSS declarations go here */
 #tudo{
-			
+	 width: 600px;
+     margin-left: auto ;
+  	 margin-right: auto ;
+  	 text-align: center;
+
 }
 
 h1{
@@ -10,4 +13,13 @@ h1{
 
 h2{
 	color: white;
+}
+p{
+	font-size: 13px;
+}
+a:hover{
+	color: #e74c3c;
+}
+#c:hover{
+	color: #c0392b;
 }
