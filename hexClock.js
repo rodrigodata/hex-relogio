@@ -3,42 +3,52 @@ if(Meteor.isClient){
         Meteor.startup(function tempo(){
 
             
-            d = new Date();
-            horasVar = d.getHours();
-            minutosVar = d.getMinutes();
-            segundosVar = d.getSeconds();
+            var d = new Date();
+            var horas = d.getHours();
+            var minutos = d.getMinutes();
+            var segundos = d.getSeconds();
 
-               if(horasVar < 10){ 
-                    horasVar = "0" + horasVar
+               if(horas < 10){ 
+                    horas = "0" + horas
                   };
-               if(minutosVar < 10) { 
-                    minutosVar = "0" + minutosVar
+               if(minutos < 10) { 
+                    minutos = "0" + minutos
                   };
-               if(segundosVar < 10) { 
-                    segundosVar = "0" + segundosVar
+               if(segundos < 10) { 
+                    segundos = "0" + segundos
                   };
 
-            relogioFinal = horasVar +" : "+ minutosVar +" : "+ segundosVar;
+            relogioFinal = horas +" : "+ minutos +" : "+ segundos;
             
-            hex = "#" + horasVar + minutosVar + segundosVar;
-            console.log("Cor da data atual em HEX é: " + hex);
+            hex = "#" + horas + minutos + segundos;
+
+            // Atualiza valor da variavel "relogioFinal" a cada 1seg
+            setInterval(function(){Session.set('atu', relogioFinal)}, 1000);
+
+            // Atualiza valor de variavel "hex" a cada 1seg
+            setInterval(function(){Session.set('atuHex', hex)}, 1000);
 
             document.body.style.background = hex;
             
-           
+            // loop da função
             setTimeout(function(){tempo();}, 1000);
-            return relogioFinal;
-        ;
-
-          
-
+           
 
       });
 
-      
+                Template.horas.helpers({
+                    'atu': function(){
+
+                          return Session.get('atu')
+                          },
+                    'atuHex': function(){
+                          return Session.get('atuHex')
+                          }
+
+                });
 }       
 
 if (Meteor.isServer) {
-      
-
+        
+        //nope
 }
